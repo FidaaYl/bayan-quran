@@ -1,7 +1,7 @@
 import React, { useState, useMemo } from 'react';
 import { useQuran } from '../context/QuranContext';
 import { SURAHS_CATALOG } from '../data/surahs';
-import { Search, Sparkles, BookOpen, Filter } from 'lucide-react';
+import { Search, Compass } from 'lucide-react';
 
 interface SurahSidebarProps {
   onCloseMobile?: () => void;
@@ -37,68 +37,60 @@ export const SurahSidebar: React.FC<SurahSidebarProps> = ({ onCloseMobile }) => 
   };
 
   return (
-    <div className="w-full md:w-80 lg:w-96 flex flex-col h-full bg-white dark:bg-stone-900 border-r border-stone-200 dark:border-stone-800 shrink-0">
+    <aside className="w-full md:w-80 lg:w-88 flex flex-col h-full bg-white dark:bg-slate-900 border-r border-slate-200/80 dark:border-slate-800 shrink-0">
       {/* Search Header */}
-      <div className="p-4 border-b border-stone-200 dark:border-stone-800 space-y-3">
+      <div className="p-4 border-b border-slate-100 dark:border-slate-800 space-y-3">
         <div className="relative">
-          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-stone-400" />
+          <Search className="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-slate-400" />
           <input
             type="text"
-            placeholder="Search surah name, number..."
+            placeholder="Search surahs (e.g. Kahf, 18, الكهف)..."
             value={searchQuery}
             onChange={e => setSearchQuery(e.target.value)}
-            className="w-full pl-9 pr-4 py-2 text-sm rounded-lg bg-stone-100 dark:bg-stone-800 text-stone-900 dark:text-stone-100 border border-stone-200 dark:border-stone-700 focus:outline-none focus:ring-2 focus:ring-emerald-500/50"
+            className="w-full pl-9 pr-4 py-2 text-xs rounded-xl bg-slate-50 dark:bg-slate-800 text-slate-900 dark:text-slate-100 border border-slate-200 dark:border-slate-700 focus:outline-none focus:ring-2 focus:ring-indigo-500/40"
           />
-          {searchQuery && (
-            <button
-              onClick={() => setSearchQuery('')}
-              className="absolute right-3 top-1/2 -translate-y-1/2 text-xs text-stone-400 hover:text-stone-600 dark:hover:text-stone-200"
-            >
-              Clear
-            </button>
-          )}
         </div>
 
-        {/* Filter Pills */}
+        {/* Filter Chips */}
         <div className="flex items-center justify-between text-xs">
-          <div className="flex items-center space-x-1">
+          <div className="flex items-center space-x-1.5">
             <button
               onClick={() => setFilterType('all')}
-              className={`px-2.5 py-1 rounded-md font-medium transition ${
+              className={`px-2.5 py-1 rounded-lg font-bold transition text-[11px] ${
                 filterType === 'all'
-                  ? 'bg-emerald-700 text-white'
-                  : 'bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 hover:bg-stone-200 dark:hover:bg-stone-700'
+                  ? 'bg-indigo-600 text-white'
+                  : 'bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'
               }`}
             >
               All (114)
             </button>
             <button
               onClick={() => setFilterType('Meccan')}
-              className={`px-2.5 py-1 rounded-md font-medium transition ${
+              className={`px-2.5 py-1 rounded-lg font-bold transition text-[11px] ${
                 filterType === 'Meccan'
-                  ? 'bg-emerald-700 text-white'
-                  : 'bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 hover:bg-stone-200 dark:hover:bg-stone-700'
+                  ? 'bg-indigo-600 text-white'
+                  : 'bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'
               }`}
             >
               Meccan
             </button>
             <button
               onClick={() => setFilterType('Medinan')}
-              className={`px-2.5 py-1 rounded-md font-medium transition ${
+              className={`px-2.5 py-1 rounded-lg font-bold transition text-[11px] ${
                 filterType === 'Medinan'
-                  ? 'bg-emerald-700 text-white'
-                  : 'bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 hover:bg-stone-200 dark:hover:bg-stone-700'
+                  ? 'bg-indigo-600 text-white'
+                  : 'bg-slate-100 dark:bg-slate-800 text-slate-500 hover:text-slate-800 dark:hover:text-slate-200'
               }`}
             >
               Medinan
             </button>
           </div>
-          <span className="text-stone-400 font-mono text-[11px]">{filteredSurahs.length} found</span>
+          <span className="text-slate-400 font-mono text-[11px]">{filteredSurahs.length} found</span>
         </div>
       </div>
 
-      {/* Surah List */}
-      <div className="flex-1 overflow-y-auto divide-y divide-stone-100 dark:divide-stone-800/60">
+      {/* Surahs Scrollable List */}
+      <div className="flex-1 overflow-y-auto divide-y divide-slate-100 dark:divide-slate-800/40">
         {filteredSurahs.map(surah => {
           const isSelected = surah.number === selectedSurahNumber;
           const progress = calculateSurahProgress(surah.number, surah.numberOfAyahs);
@@ -112,36 +104,35 @@ export const SurahSidebar: React.FC<SurahSidebarProps> = ({ onCloseMobile }) => 
               }}
               className={`w-full px-4 py-3 flex items-center justify-between text-left transition group ${
                 isSelected
-                  ? 'bg-emerald-50 dark:bg-emerald-950/40 border-l-4 border-emerald-600 text-stone-900 dark:text-white'
-                  : 'hover:bg-stone-50 dark:hover:bg-stone-800/40 text-stone-700 dark:text-stone-300'
+                  ? 'bg-indigo-50/70 dark:bg-indigo-950/40 border-l-4 border-indigo-600 text-slate-900 dark:text-white'
+                  : 'hover:bg-slate-50/80 dark:hover:bg-slate-800/40 text-slate-700 dark:text-slate-300'
               }`}
             >
               <div className="flex items-center space-x-3 min-w-0">
-                {/* Number Badge */}
+                {/* Index Pill */}
                 <div
-                  className={`w-8 h-8 rounded-lg flex items-center justify-center text-xs font-semibold shrink-0 transition ${
+                  className={`w-8 h-8 rounded-xl flex items-center justify-center text-xs font-bold shrink-0 transition ${
                     isSelected
-                      ? 'bg-emerald-600 text-white'
-                      : 'bg-stone-100 dark:bg-stone-800 text-stone-600 dark:text-stone-400 group-hover:bg-emerald-100 group-hover:text-emerald-800 dark:group-hover:bg-emerald-900/60 dark:group-hover:text-emerald-300'
+                      ? 'bg-indigo-600 text-white shadow-xs'
+                      : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 group-hover:bg-indigo-100 dark:group-hover:bg-indigo-950 group-hover:text-indigo-600'
                   }`}
                 >
                   {surah.number}
                 </div>
 
-                {/* English Meta */}
+                {/* Details */}
                 <div className="truncate">
-                  <div className="text-sm font-semibold truncate group-hover:text-emerald-700 dark:group-hover:text-emerald-400">
+                  <div className="text-xs sm:text-sm font-bold truncate group-hover:text-indigo-600 dark:group-hover:text-indigo-400">
                     {surah.englishName}
                   </div>
-                  <div className="text-xs text-stone-400 dark:text-stone-500 truncate">
-                    {surah.englishNameTranslation} • {surah.numberOfAyahs} verses
+                  <div className="text-[11px] text-slate-400 dark:text-slate-500 truncate">
+                    {surah.englishNameTranslation} • {surah.numberOfAyahs} ayahs
                   </div>
 
-                  {/* Progress bar if any mastered */}
                   {progress > 0 && (
-                    <div className="mt-1 w-24 h-1 bg-stone-200 dark:bg-stone-700 rounded-full overflow-hidden">
+                    <div className="mt-1 w-20 h-1 bg-slate-200 dark:bg-slate-700 rounded-full overflow-hidden">
                       <div
-                        className="h-full bg-emerald-500 rounded-full"
+                        className="h-full bg-amber-500 rounded-full"
                         style={{ width: `${progress}%` }}
                       />
                     </div>
@@ -151,10 +142,10 @@ export const SurahSidebar: React.FC<SurahSidebarProps> = ({ onCloseMobile }) => 
 
               {/* Arabic Name */}
               <div className="text-right pl-2 shrink-0">
-                <div className="font-arabic text-base font-semibold text-stone-800 dark:text-stone-200">
+                <div className="font-arabic text-sm sm:text-base font-bold text-slate-800 dark:text-slate-200">
                   {surah.name}
                 </div>
-                <div className="text-[10px] text-stone-400 uppercase tracking-wider">
+                <div className="text-[9px] uppercase tracking-wider font-semibold text-slate-400">
                   {surah.revelationType}
                 </div>
               </div>
@@ -163,11 +154,11 @@ export const SurahSidebar: React.FC<SurahSidebarProps> = ({ onCloseMobile }) => 
         })}
 
         {filteredSurahs.length === 0 && (
-          <div className="p-8 text-center text-stone-400 text-sm">
+          <div className="p-8 text-center text-slate-400 text-xs">
             No surahs found matching "{searchQuery}"
           </div>
         )}
       </div>
-    </div>
+    </aside>
   );
 };

@@ -6,7 +6,7 @@ import { fetchSurahDetail } from '../services/quranApi';
 
 export type { ViewMode, RecallMode } from '../types/quran';
 export type TranslationLanguage = 'en' | 'fr' | 'tafsir' | 'none';
-export type AppTheme = 'light' | 'dark' | 'sepia';
+export type AppTheme = 'light' | 'dark';
 
 export interface BookmarkItem {
   id: string;
@@ -58,7 +58,7 @@ interface QuranContextType {
   setRecallMode: (mode: RecallMode) => void;
   masteredAyahs: Record<string, 'learning' | 'mastered'>; // key: `${surahNumber}:${ayahInSurah}`
   setAyahMastery: (surahNumber: number, ayahInSurah: number, status: 'new' | 'learning' | 'mastered') => void;
-  revealedAyahsInMasked: Set<number>; // ayahInSurah set
+  revealedAyahsInMasked: Set<number>;
   toggleRevealMaskedAyah: (ayahInSurah: number) => void;
   resetMaskedReveals: () => void;
 
@@ -81,7 +81,7 @@ export const QuranProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [isLoadingSurah, setIsLoadingSurah] = useState<boolean>(true);
 
   const [activeTranslation, setActiveTranslation] = useState<TranslationLanguage>('en');
-  const [arabicFontSize, setArabicFontSize] = useState<number>(28);
+  const [arabicFontSize, setArabicFontSize] = useState<number>(26);
   const [appTheme, setAppTheme] = useState<AppTheme>('light');
 
   // Audio
@@ -99,7 +99,7 @@ export const QuranProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   const [revealedAyahsInMasked, setRevealedAyahsInMasked] = useState<Set<number>>(new Set());
   const [masteredAyahs, setMasteredAyahs] = useState<Record<string, 'learning' | 'mastered'>>(() => {
     try {
-      const saved = localStorage.getItem('bayan_quran_mastery');
+      const saved = localStorage.getItem('qabas_quran_mastery');
       return saved ? JSON.parse(saved) : {};
     } catch {
       return {};
@@ -109,7 +109,7 @@ export const QuranProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   // Bookmarks
   const [bookmarks, setBookmarks] = useState<BookmarkItem[]>(() => {
     try {
-      const saved = localStorage.getItem('bayan_quran_bookmarks');
+      const saved = localStorage.getItem('qabas_quran_bookmarks');
       return saved ? JSON.parse(saved) : [];
     } catch {
       return [];
@@ -122,18 +122,16 @@ export const QuranProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   // Apply dark theme class to <html>
   useEffect(() => {
     const root = document.documentElement;
-    root.classList.remove('dark', 'sepia-theme');
+    root.classList.remove('dark');
     if (appTheme === 'dark') {
       root.classList.add('dark');
-    } else if (appTheme === 'sepia') {
-      root.classList.add('sepia-theme');
     }
   }, [appTheme]);
 
   // Save mastery
   useEffect(() => {
     try {
-      localStorage.setItem('bayan_quran_mastery', JSON.stringify(masteredAyahs));
+      localStorage.setItem('qabas_quran_mastery', JSON.stringify(masteredAyahs));
     } catch (e) {
       console.warn(e);
     }
@@ -142,7 +140,7 @@ export const QuranProvider: React.FC<{ children: React.ReactNode }> = ({ childre
   // Save bookmarks
   useEffect(() => {
     try {
-      localStorage.setItem('bayan_quran_bookmarks', JSON.stringify(bookmarks));
+      localStorage.setItem('qabas_quran_bookmarks', JSON.stringify(bookmarks));
     } catch (e) {
       console.warn(e);
     }

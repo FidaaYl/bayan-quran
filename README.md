@@ -1,9 +1,10 @@
-# Bayan Quran (بيان) — Innovative Quranic Application
+# Qabas Quran (قَبَس) — Smart Memorization & Audio Navigator
 
 > **University Practical Work (TP) Submission & Competition**  
 > **Course / Subject:** Web & Cloud Application Engineering  
 > **Evaluator:** Dr. Mohammed Sahraoui ([sahraoui.mohammed@outlook.com](mailto:sahraoui.mohammed@outlook.com))  
 > **Repository:** [https://github.com/FidaaYl/bayan-quran](https://github.com/FidaaYl/bayan-quran)  
+> **Live Deployed App:** [https://fidaayl.github.io/bayan-quran/](https://fidaayl.github.io/bayan-quran/)  
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new/clone?repository-url=https://github.com/FidaaYl/bayan-quran)
 
@@ -11,24 +12,24 @@
 
 ## 📖 Overview
 
-**Bayan Quran (بيان)** is an innovative, high-fidelity Quranic web platform engineered to synthesize the best features of modern Islamic tech applications (such as *Muhaffidh.app*, *Tarteel.ai*, *Quran.com*, and *Tafsir.one*). 
+**Qabas (قَبَس)** is an innovative, sleek Quranic web application engineered with a clean modern aesthetic, combining active recall memorization tools, thematic emotional reflection, a floating dynamic audio dock, and an interactive presentation trivia challenge.
 
-Designed specifically for academic presentation and peer voting, it combines interactive **Hifz memorization**, **thematic emotional navigation (Tadabbur)**, **multi-reciter audio synchronization**, **bilingual translations (English & French) with Tafsir**, and a **live classroom presentation quiz**.
+Inspired by modern learning psychology and cognitive science, Qabas provides students and reciters with an active, focused environment to study, memorize, and contemplate the Holy Quran.
 
 ---
 
 ## 🌟 Key Innovations
 
-### 1. Intelligent Hifz Studio (Memorization & Recall Lab)
-- **4 Progressive Cognitive Recall Modes**:
+### 1. Cognitive Recall Hifz Lab
+- **4 Distinct Recall Modes**:
   - **Full Text Mode**: Traditional reading and review.
-  - **First-Word Prompt Mode**: Displays only the first word/words of each verse to prompt active retrieval from memory (cognitive science recall method).
-  - **Tap-to-Reveal / Masked Mode**: Blurs the sacred text; users recite from memory and tap the card to verify their recall.
-  - **Fill-in-the-Blanks Mode**: Masks every second word with `[ ? ]` to test mid-verse retention.
-- **Mastery Tracker & Spaced Review**: Mark verses as *Learning* or *Mastered* with persistent `localStorage` progress tracking and celebratory confetti upon completing a Surah.
-- **Ayah-by-Ayah Audio Looper**: Repeat each verse 1x, 3x, 5x, or 10x with adjustable speed (0.75x to 1.5x) for Muraja'ah.
+  - **First-Word Prompt Mode**: Displays only the first word/words of each verse to prompt active cognitive retrieval.
+  - **Tap-to-Unmask Mode**: Completely masks the text; users recite from memory and tap the card to verify their recall.
+  - **Cloze Blanks Mode**: Conceals key words with `[...]` to test retention within verses.
+- **Mastery Tracker**: Mark verses as *Learning* or *Mastered* with persistent `localStorage` progress tracking and celebratory confetti upon completing a chapter.
+- **Ayah-by-Ayah Looper**: Repeat each verse 1x, 3x, 5x, or 10x with adjustable speed (0.75x to 1.5x).
 
-### 2. Thematic Spiritual Navigator (Tadabbur & Emotional Solace)
+### 2. Life & Tadabbur Navigator
 Connects real-world human emotions and life crossroads with Quranic solace:
 - ⚡ **Anxiety & Overthinking (القلق وضيق الصدر)**: Ar-Ra'd 28, Al-Baqarah 286.
 - 💔 **Sadness & Heartache (الحزن والمواساة)**: Ad-Duhaa 3-5, Ash-Sharh 5-6.
@@ -39,7 +40,7 @@ Connects real-world human emotions and life crossroads with Quranic solace:
 - 💼 **Sustenance & Tawakkul (الرزق والتوكل)**: At-Talaaq 2-3.
 *Each theme includes Arabic script, English & French translations, Tafsir summaries, and practical Tadabbur contemplation prompts.*
 
-### 3. Full Multi-Reciter Mushaf Reader
+### 3. Synchronized Multi-Reciter Mushaf
 - Full catalog of all **114 Surahs** with instant search by Arabic name, English name, or Surah number.
 - **5 World-Class Reciters**:
   - Sheikh Mishary Rashid Alafasy (Murattal)
@@ -47,16 +48,16 @@ Connects real-world human emotions and life crossroads with Quranic solace:
   - Sheikh AbdulBaset AbdulSamad (Murattal)
   - Sheikh Mohamed Siddiq El-Minshawi (Soulful)
   - Sheikh Abu Bakr Al-Shatri (Melodic)
-- **Synchronized Audio Player Bar**: Floating bottom bar with progress scrubber, repeat counter, and automatic verse highlighting.
+- **Floating Dynamic Island Audio Player**: Sleek floating capsule with soundwave animations, scrubber, and repeat controls.
 - **Trilingual Academic Reach**: Original Arabic Uthmani text, English (*Saheeh International*), French (*Muhammad Hamidullah*), and Arabic Tafsir (*Al-Muyassar*).
 
-### 4. Interactive Quran Quiz Challenge
+### 4. Interactive Quiz Battle
 - 8 engaging Quranic knowledge questions covering historical context, Surah lengths, unique Basmalah occurrences, and revelation wisdom.
 - Instant answer verification with explanatory notes and Surah references.
-- Built specifically for the **live university TP presentation** to engage Dr. Sahraoui and fellow classmates.
+- Tailored for the **live university TP presentation** to engage Dr. Sahraoui and fellow classmates.
 
 ### 5. Academic TP Submission Suite
-- Built-in **TP Project Info Modal** accessible directly in the app.
+- Built-in **TP Info Modal** accessible directly in the app.
 - Customizable student author names and university IDs.
 - One-click **"Send Submission to Prof. Sahraoui"** button that automatically pre-fills the email with the GitHub repo and deployment links.
 
@@ -65,22 +66,17 @@ Connects real-world human emotions and life crossroads with Quranic solace:
 ## 🛠️ Technology Stack & APIs
 
 - **Frontend:** React 19, TypeScript, Vite
-- **Styling & Design System:** Tailwind CSS v4, custom Islamic typography (`Amiri Quran`, `Amiri`, `Scheherazade New`, `Plus Jakarta Sans`)
+- **Styling & Design System:** Tailwind CSS v4, modern geometric typography (`Cairo`, `Outfit`, `Noto Sans Arabic`)
 - **Icons & Visual Effects:** Lucide React, Canvas Confetti
 - **APIs & Data Providers:**
-  - **Al-Quran Cloud REST API** (`https://api.alquran.cloud/v1/`): Uthmani script, English (en.sahih), French (fr.hamidullah), Tafsir (ar.muyassar).
-  - **EveryAyah Audio CDN** (`https://everyayah.com/`): High-bitrate audio per Ayah across multiple renowned Qaris.
+  - **Al-Quran Cloud REST API** (`https://api.alquran.cloud/v1/`): Multi-edition text and Tafsir.
+  - **EveryAyah Audio CDN** (`https://everyayah.com/`): High-bitrate audio per Ayah.
   - **Tarteel QUL / Quran.com API**: Structural alignment and referencing.
 
 ---
 
 ## 🚀 Getting Started Locally
 
-### Prerequisites
-- Node.js 18+ (tested on Node v22)
-- npm or yarn
-
-### Installation
 ```bash
 # Clone the repository
 git clone https://github.com/FidaaYl/bayan-quran.git
@@ -93,31 +89,17 @@ npm install
 npm run dev
 ```
 
-Open [http://localhost:5173](http://localhost:5173) in your browser.
-
-### Production Build
-```bash
-npm run build
-npm run preview
-```
-
 ---
 
 ## 🌐 Deployment
 
-### Deploy to Vercel (Recommended)
-1. Push this repository to your GitHub account.
-2. Go to [https://vercel.com/new](https://vercel.com/new).
-3. Import the `bayan-quran` repository.
-4. Framework preset will automatically detect **Vite**.
-5. Click **Deploy**!
+### Deploy to GitHub Pages (Automatic)
+This repository includes a GitHub Actions workflow that automatically builds and deploys to GitHub Pages on every push to `main`.
 
-### Deploy to Render
-1. Create a **New Static Site** on Render.
-2. Connect your GitHub repository.
-3. Build command: `npm run build`
-4. Publish directory: `dist`
-5. Click **Create Static Site**.
+### Deploy to Vercel
+1. Go to [https://vercel.com/new](https://vercel.com/new).
+2. Import the `bayan-quran` repository.
+3. Click **Deploy**.
 
 ---
 
@@ -125,4 +107,4 @@ npm run preview
 
 - **Professor:** Dr. Mohammed Sahraoui
 - **Email:** [sahraoui.mohammed@outlook.com](mailto:sahraoui.mohammed@outlook.com)
-- **Project:** Bayan Quran (بيان)
+- **Project:** Qabas (قَبَس)

@@ -1,17 +1,16 @@
 import React from 'react';
-import { useQuran, ViewMode, AppTheme } from '../context/QuranContext';
+import { useQuran, ViewMode } from '../context/QuranContext';
 import {
-  BookOpen,
-  Brain,
-  HeartHandshake,
-  Trophy,
-  Bookmark,
+  BookOpenText,
+  BrainCircuit,
+  Compass,
+  Zap,
+  BookmarkCheck,
   Sun,
   Moon,
-  Coffee,
   Menu,
   GraduationCap,
-  Sparkles
+  Sparkle
 } from 'lucide-react';
 
 interface NavbarProps {
@@ -31,33 +30,27 @@ export const Navbar: React.FC<NavbarProps> = ({ onToggleSidebar }) => {
   } = useQuran();
 
   const navItems: { mode: ViewMode; label: string; icon: React.ReactNode; badge?: number }[] = [
-    { mode: 'mushaf', label: 'Mushaf', icon: <BookOpen className="w-4 h-4" /> },
-    { mode: 'hifz', label: 'Hifz Studio', icon: <Brain className="w-4 h-4" /> },
-    { mode: 'themes', label: 'Tadabbur Themes', icon: <HeartHandshake className="w-4 h-4" /> },
-    { mode: 'quiz', label: 'Quran Quiz', icon: <Trophy className="w-4 h-4" /> },
+    { mode: 'mushaf', label: 'Mushaf Reader', icon: <BookOpenText className="w-4 h-4" /> },
+    { mode: 'hifz', label: 'Hifz Studio', icon: <BrainCircuit className="w-4 h-4" /> },
+    { mode: 'themes', label: 'Life & Tadabbur', icon: <Compass className="w-4 h-4" /> },
+    { mode: 'quiz', label: 'Quiz Battle', icon: <Zap className="w-4 h-4" /> },
     {
       mode: 'bookmarks',
-      label: 'Saved',
-      icon: <Bookmark className="w-4 h-4" />,
+      label: 'Bookmarks',
+      icon: <BookmarkCheck className="w-4 h-4" />,
       badge: bookmarks.length > 0 ? bookmarks.length : undefined
     }
   ];
 
-  const cycleTheme = () => {
-    if (appTheme === 'light') setAppTheme('sepia');
-    else if (appTheme === 'sepia') setAppTheme('dark');
-    else setAppTheme('light');
-  };
-
   return (
-    <header className="sticky top-0 z-30 bg-white/95 dark:bg-stone-900/95 backdrop-blur border-b border-stone-200 dark:border-stone-800 transition-colors">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between gap-4">
-        {/* Left: Mobile Menu + Brand */}
+    <header className="sticky top-0 z-30 bg-white/80 dark:bg-slate-900/80 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800 transition-colors">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 h-16 flex items-center justify-between gap-3">
+        {/* Left: Brand */}
         <div className="flex items-center space-x-3">
           <button
             onClick={onToggleSidebar}
-            className="md:hidden p-2 rounded-lg text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 focus:outline-none"
-            aria-label="Toggle Surahs drawer"
+            className="md:hidden p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition"
+            aria-label="Toggle Surah drawer"
           >
             <Menu className="w-5 h-5" />
           </button>
@@ -66,43 +59,47 @@ export const Navbar: React.FC<NavbarProps> = ({ onToggleSidebar }) => {
             onClick={() => setViewMode('mushaf')}
             className="flex items-center space-x-2.5 cursor-pointer group"
           >
-            <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-emerald-600 to-teal-700 flex items-center justify-center text-white shadow-sm shadow-emerald-700/20 group-hover:scale-105 transition">
-              <span className="font-arabic text-lg font-bold">ب</span>
+            <div className="w-9 h-9 rounded-xl bg-gradient-to-tr from-indigo-600 via-indigo-700 to-amber-500 flex items-center justify-center text-white shadow-md shadow-indigo-600/20 group-hover:rotate-6 transition duration-300">
+              <Sparkle className="w-5 h-5 fill-current" />
             </div>
             <div>
               <div className="flex items-center space-x-1.5">
-                <span className="font-bold text-stone-900 dark:text-white tracking-tight text-base sm:text-lg">
-                  Bayan Quran
+                <span className="font-extrabold text-slate-900 dark:text-white tracking-tight text-base sm:text-lg">
+                  Qabas
                 </span>
-                <span className="font-arabic text-emerald-600 dark:text-emerald-400 font-bold text-sm">
-                  (بَيَان)
+                <span className="font-arabic text-indigo-600 dark:text-indigo-400 font-bold text-sm">
+                  (قَبَس)
                 </span>
               </div>
-              <p className="text-[10px] text-stone-400 dark:text-stone-500 hidden sm:block">
-                Smart Memorization & Thematic Tadabbur
+              <p className="text-[10px] text-slate-400 dark:text-slate-500 hidden sm:block font-medium">
+                Active Memorization & Audio Navigator
               </p>
             </div>
           </div>
         </div>
 
-        {/* Center: Navigation Tabs (Desktop) */}
-        <nav className="hidden md:flex items-center space-x-1 bg-stone-100 dark:bg-stone-800/80 p-1 rounded-xl">
+        {/* Center: Segmented Navigation Pills (Desktop) */}
+        <nav className="hidden md:flex items-center space-x-1 bg-slate-100 dark:bg-slate-800/90 p-1.5 rounded-2xl border border-slate-200/60 dark:border-slate-700/60">
           {navItems.map(item => {
             const isActive = viewMode === item.mode;
             return (
               <button
                 key={item.mode}
                 onClick={() => setViewMode(item.mode)}
-                className={`flex items-center space-x-1.5 px-3 py-1.5 rounded-lg text-xs font-medium transition relative ${
+                className={`flex items-center space-x-2 px-3.5 py-1.5 rounded-xl text-xs font-semibold transition-all relative ${
                   isActive
-                    ? 'bg-white dark:bg-stone-900 text-emerald-800 dark:text-emerald-400 shadow-sm'
-                    : 'text-stone-600 dark:text-stone-400 hover:text-stone-900 dark:hover:text-stone-200'
+                    ? 'bg-indigo-600 text-white shadow-md shadow-indigo-600/30'
+                    : 'text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-slate-100 hover:bg-white/50 dark:hover:bg-slate-700/50'
                 }`}
               >
                 {item.icon}
                 <span>{item.label}</span>
                 {item.badge !== undefined && (
-                  <span className="ml-1 px-1.5 py-0.2 rounded-full text-[10px] bg-emerald-100 dark:bg-emerald-950 text-emerald-800 dark:text-emerald-300 font-bold">
+                  <span
+                    className={`ml-1 px-1.5 py-0.2 rounded-full text-[10px] font-bold ${
+                      isActive ? 'bg-indigo-800 text-white' : 'bg-indigo-100 text-indigo-800 dark:bg-indigo-950 dark:text-indigo-300'
+                    }`}
+                  >
                     {item.badge}
                   </span>
                 )}
@@ -113,21 +110,21 @@ export const Navbar: React.FC<NavbarProps> = ({ onToggleSidebar }) => {
 
         {/* Right: Controls & TP Info Button */}
         <div className="flex items-center space-x-2">
-          {/* Font Size Adjuster (active in mushaf & hifz) */}
+          {/* Font Size Adjuster */}
           {(viewMode === 'mushaf' || viewMode === 'hifz') && (
-            <div className="hidden lg:flex items-center space-x-1 bg-stone-100 dark:bg-stone-800 rounded-lg p-0.5 text-xs text-stone-600 dark:text-stone-300">
+            <div className="hidden lg:flex items-center space-x-1 bg-slate-100 dark:bg-slate-800 rounded-xl p-1 text-xs text-slate-600 dark:text-slate-300 border border-slate-200/60 dark:border-slate-700">
               <button
-                onClick={() => setArabicFontSize(Math.max(22, arabicFontSize - 2))}
-                className="px-2 py-1 hover:bg-white dark:hover:bg-stone-700 rounded transition font-bold"
-                title="Decrease Arabic font size"
+                onClick={() => setArabicFontSize(Math.max(20, arabicFontSize - 2))}
+                className="px-2 py-0.5 hover:bg-white dark:hover:bg-slate-700 rounded-lg transition font-bold"
+                title="Decrease font size"
               >
                 A-
               </button>
-              <span className="px-1 text-[11px] font-mono text-stone-400">{arabicFontSize}px</span>
+              <span className="px-1 text-[11px] font-mono text-slate-400 font-semibold">{arabicFontSize}px</span>
               <button
-                onClick={() => setArabicFontSize(Math.min(42, arabicFontSize + 2))}
-                className="px-2 py-1 hover:bg-white dark:hover:bg-stone-700 rounded transition font-bold"
-                title="Increase Arabic font size"
+                onClick={() => setArabicFontSize(Math.min(38, arabicFontSize + 2))}
+                className="px-2 py-0.5 hover:bg-white dark:hover:bg-slate-700 rounded-lg transition font-bold"
+                title="Increase font size"
               >
                 A+
               </button>
@@ -136,45 +133,47 @@ export const Navbar: React.FC<NavbarProps> = ({ onToggleSidebar }) => {
 
           {/* Theme Switcher Button */}
           <button
-            onClick={cycleTheme}
-            className="p-2 rounded-lg text-stone-600 dark:text-stone-300 hover:bg-stone-100 dark:hover:bg-stone-800 transition"
-            title={`Current theme: ${appTheme}. Click to cycle.`}
+            onClick={() => setAppTheme(appTheme === 'dark' ? 'light' : 'dark')}
+            className="p-2 rounded-xl text-slate-600 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 border border-slate-200/60 dark:border-slate-700 transition"
+            title="Toggle Dark / Light Theme"
           >
-            {appTheme === 'light' && <Sun className="w-4 h-4 text-amber-500" />}
-            {appTheme === 'sepia' && <Coffee className="w-4 h-4 text-amber-700" />}
-            {appTheme === 'dark' && <Moon className="w-4 h-4 text-blue-400" />}
+            {appTheme === 'light' ? (
+              <Moon className="w-4 h-4 text-indigo-600" />
+            ) : (
+              <Sun className="w-4 h-4 text-amber-400" />
+            )}
           </button>
 
-          {/* University TP Submission Pill */}
+          {/* TP Submission Pill */}
           <button
             onClick={() => setIsProjectInfoOpen(true)}
-            className="flex items-center space-x-1.5 px-3 py-1.5 rounded-lg bg-emerald-50 hover:bg-emerald-100 dark:bg-emerald-950/60 dark:hover:bg-emerald-900/60 border border-emerald-200 dark:border-emerald-800/80 text-emerald-800 dark:text-emerald-300 text-xs font-semibold shadow-xs transition"
+            className="flex items-center space-x-1.5 px-3 py-1.5 rounded-xl bg-gradient-to-r from-indigo-50 to-amber-50 hover:from-indigo-100 hover:to-amber-100 dark:from-indigo-950/60 dark:to-slate-800 border border-indigo-200 dark:border-indigo-800 text-indigo-900 dark:text-indigo-300 text-xs font-bold transition shadow-xs"
           >
-            <GraduationCap className="w-3.5 h-3.5" />
-            <span className="hidden sm:inline">TP Project Info</span>
+            <GraduationCap className="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400" />
+            <span className="hidden sm:inline">TP Info</span>
             <span className="sm:hidden">TP</span>
           </button>
         </div>
       </div>
 
-      {/* Mobile Bottom Navigation Bar */}
-      <div className="md:hidden flex items-center justify-around border-t border-stone-200 dark:border-stone-800 py-1 bg-stone-50/90 dark:bg-stone-900/90">
+      {/* Mobile Bottom Navigation */}
+      <div className="md:hidden flex items-center justify-around border-t border-slate-200 dark:border-slate-800 py-1.5 bg-white/95 dark:bg-slate-900/95">
         {navItems.map(item => {
           const isActive = viewMode === item.mode;
           return (
             <button
               key={item.mode}
               onClick={() => setViewMode(item.mode)}
-              className={`flex flex-col items-center py-1 px-2 text-[11px] font-medium transition ${
+              className={`flex flex-col items-center py-1 px-2 text-[10px] font-bold transition ${
                 isActive
-                  ? 'text-emerald-700 dark:text-emerald-400'
-                  : 'text-stone-500 dark:text-stone-400'
+                  ? 'text-indigo-600 dark:text-indigo-400'
+                  : 'text-slate-500 dark:text-slate-400'
               }`}
             >
               <div className="relative">
                 {item.icon}
                 {item.badge !== undefined && (
-                  <span className="absolute -top-1 -right-2 px-1 rounded-full text-[9px] bg-emerald-600 text-white font-bold">
+                  <span className="absolute -top-1 -right-2 px-1 rounded-full text-[8px] bg-indigo-600 text-white font-bold">
                     {item.badge}
                   </span>
                 )}

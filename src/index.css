@@ -2,9 +2,9 @@
 
 @layer base {
   :root {
-    --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
-    --font-arabic: 'Amiri', 'Scheherazade New', serif;
-    --font-quran: 'Amiri Quran', 'Amiri', serif;
+    --font-sans: 'Outfit', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+    --font-arabic: 'Cairo', sans-serif;
+    --font-quran: 'Noto Sans Arabic', 'Cairo', sans-serif;
   }
 
   body {
@@ -13,53 +13,70 @@
 }
 
 .font-quran {
-  font-family: 'Amiri Quran', 'Amiri', serif;
-  line-height: 2.3;
+  font-family: var(--font-quran);
+  line-height: 2.1;
+  letter-spacing: 0.01em;
 }
 
 .font-arabic {
-  font-family: 'Amiri', 'Scheherazade New', serif;
+  font-family: var(--font-arabic);
 }
 
-/* Custom delicate scrollbars */
+/* Custom sleek slim scrollbars */
 ::-webkit-scrollbar {
-  width: 6px;
-  height: 6px;
+  width: 5px;
+  height: 5px;
 }
 ::-webkit-scrollbar-track {
   background: transparent;
 }
 ::-webkit-scrollbar-thumb {
-  background: rgba(148, 163, 184, 0.35);
+  background: rgba(99, 102, 241, 0.25);
   border-radius: 9999px;
 }
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(148, 163, 184, 0.6);
+  background: rgba(99, 102, 241, 0.5);
 }
 
-/* Islamic arabesque border pattern utility */
-.mushaf-page {
-  background-color: #fbf9f4;
-  background-image: radial-gradient(#e7ded0 0.75px, transparent 0.75px);
-  background-size: 16px 16px;
+/* Modern clean background dot pattern */
+.modern-grid {
+  background-image: radial-gradient(rgba(99, 102, 241, 0.08) 1px, transparent 1px);
+  background-size: 20px 20px;
 }
 
-.dark .mushaf-page {
-  background-color: #0f1715;
-  background-image: radial-gradient(#1e2c28 0.75px, transparent 0.75px);
+.dark .modern-grid {
+  background-image: radial-gradient(rgba(129, 140, 248, 0.07) 1px, transparent 1px);
 }
 
-/* Quranic verse number end symbol styling */
-.ayah-end-symbol {
+/* Modern verse number tag */
+.ayah-num-tag {
   display: inline-flex;
   align-items: center;
   justify-content: center;
-  position: relative;
-  width: 1.8em;
-  height: 1.8em;
-  margin: 0 0.35em;
+  font-size: 0.72em;
+  font-family: var(--font-sans);
+  font-weight: 700;
   vertical-align: middle;
-  font-family: 'Amiri', serif;
-  font-size: 0.85em;
-  color: #059669;
+  margin: 0 0.35rem;
+  padding: 0.15rem 0.55rem;
+  border-radius: 9999px;
+  background-color: rgba(99, 102, 241, 0.12);
+  color: #4f46e5;
+  border: 1px solid rgba(99, 102, 241, 0.25);
 }
+
+.dark .ayah-num-tag {
+  background-color: rgba(99, 102, 241, 0.2);
+  color: #a5b4fc;
+  border-color: rgba(99, 102, 241, 0.35);
+}
+
+/* Soundwave pulse animation */
+@keyframes soundwave {
+  0%, 100% { height: 4px; }
+  50% { height: 16px; }
+}
+
+.animate-wave-1 { animation: soundwave 1s ease-in-out infinite; }
+.animate-wave-2 { animation: soundwave 0.8s ease-in-out infinite 0.2s; }
+.animate-wave-3 { animation: soundwave 1.2s ease-in-out infinite 0.4s; }
