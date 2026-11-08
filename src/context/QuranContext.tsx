@@ -66,10 +66,6 @@ interface QuranContextType {
   bookmarks: BookmarkItem[];
   toggleBookmark: (ayah: Ayah) => void;
   isBookmarked: (surahNumber: number, ayahInSurah: number) => boolean;
-
-  // Student / TP Modal
-  isProjectInfoOpen: boolean;
-  setIsProjectInfoOpen: (open: boolean) => void;
 }
 
 const QuranContext = createContext<QuranContextType | undefined>(undefined);
@@ -82,7 +78,15 @@ export const QuranProvider: React.FC<{ children: React.ReactNode }> = ({ childre
 
   const [activeTranslation, setActiveTranslation] = useState<TranslationLanguage>('en');
   const [arabicFontSize, setArabicFontSize] = useState<number>(26);
-  const [appTheme, setAppTheme] = useState<AppTheme>('light');
+  const [appTheme, setAppTheme] = useState<AppTheme>(() => {
+    try {
+      const saved = localStorage.getItem('qabas_theme');
+      if (saved === 'dark' || saved === 'light') return saved;
+      return 'light';
+    } catch {
+      return 'light';
+    }
+  });
 
   // Audio
   const [currentReciter, setCurrentReciter] = useState<Reciter>(RECITERS_CATALOG[0]);
@@ -116,15 +120,18 @@ export const QuranProvider: React.FC<{ children: React.ReactNode }> = ({ childre
     }
   });
 
-  // Project Info Modal
-  const [isProjectInfoOpen, setIsProjectInfoOpen] = useState<boolean>(false);
-
-  // Apply dark theme class to <html>
+  // Apply dark theme class to <html> and save to localStorage
   useEffect(() => {
     const root = document.documentElement;
-    root.classList.remove('dark');
     if (appTheme === 'dark') {
       root.classList.add('dark');
+    } else {
+      root.classList.remove('dark');
+    }
+    try {
+      localStorage.setItem('qabas_theme', appTheme);
+    } catch (e) {
+      console.warn(e);
     }
   }, [appTheme]);
 
@@ -375,9 +382,7 @@ export const QuranProvider: React.FC<{ children: React.ReactNode }> = ({ childre
         resetMaskedReveals,
         bookmarks,
         toggleBookmark,
-        isBookmarked,
-        isProjectInfoOpen,
-        setIsProjectInfoOpen
+        isBookmarked
       }}
     >
       {children}

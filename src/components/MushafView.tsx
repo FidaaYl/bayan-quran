@@ -7,9 +7,7 @@ import {
   ChevronRight,
   Copy,
   Check,
-  CheckCircle2,
-  Sparkles,
-  Share2
+  CheckCircle2
 } from 'lucide-react';
 
 export const MushafView: React.FC = () => {
@@ -36,7 +34,7 @@ export const MushafView: React.FC = () => {
     return (
       <div className="flex-1 flex flex-col items-center justify-center p-12 text-slate-400">
         <div className="w-10 h-10 border-4 border-indigo-600/30 border-t-indigo-600 rounded-full animate-spin mb-3" />
-        <p className="text-xs font-semibold tracking-wider uppercase">Loading Chapter...</p>
+        <p className="text-xs font-semibold tracking-wider uppercase text-slate-500">Loading Chapter...</p>
       </div>
     );
   }
@@ -60,10 +58,10 @@ export const MushafView: React.FC = () => {
   return (
     <div className="flex-1 overflow-y-auto px-4 sm:px-6 py-6 max-w-4xl mx-auto w-full">
       {/* Modern Surah Banner */}
-      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-900 via-slate-900 to-indigo-950 text-white p-6 sm:p-8 mb-6 shadow-xl border border-indigo-800/40">
+      <div className="relative overflow-hidden rounded-3xl bg-gradient-to-r from-indigo-700 via-indigo-800 to-slate-900 dark:from-indigo-950 dark:via-slate-900 dark:to-indigo-950 text-white p-6 sm:p-8 mb-6 shadow-xl border border-indigo-600/20 dark:border-indigo-800/40">
         <div className="flex flex-col md:flex-row md:items-center justify-between gap-4">
           <div className="space-y-2">
-            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-indigo-500/20 text-indigo-300 text-xs font-bold uppercase tracking-wider border border-indigo-400/20">
+            <div className="inline-flex items-center space-x-2 px-3 py-1 rounded-full bg-white/15 dark:bg-indigo-500/20 text-white dark:text-indigo-300 text-xs font-bold uppercase tracking-wider backdrop-blur-sm">
               <span>Chapter {surahDetail.number}</span>
               <span>•</span>
               <span>{surahDetail.revelationType}</span>
@@ -73,24 +71,24 @@ export const MushafView: React.FC = () => {
 
             <h1 className="text-2xl sm:text-4xl font-extrabold tracking-tight">
               {surahDetail.englishName}
-              <span className="font-arabic text-amber-400 ml-3 text-3xl font-bold">
+              <span className="font-arabic text-amber-300 dark:text-amber-400 ml-3 text-3xl font-bold">
                 {surahDetail.name}
               </span>
             </h1>
 
-            <p className="text-xs sm:text-sm text-slate-300">
+            <p className="text-xs sm:text-sm text-indigo-100 dark:text-slate-300 font-medium">
               {surahDetail.englishNameTranslation}
             </p>
           </div>
 
           {/* Translation Switcher Segment */}
-          <div className="flex flex-wrap gap-1 bg-black/30 backdrop-blur-md p-1.5 rounded-2xl border border-white/10 self-start md:self-auto text-xs font-semibold">
+          <div className="flex flex-wrap gap-1 bg-black/25 dark:bg-black/40 backdrop-blur-md p-1.5 rounded-2xl border border-white/10 self-start md:self-auto text-xs font-semibold">
             <button
               onClick={() => setActiveTranslation('en')}
               className={`px-3 py-1.5 rounded-xl transition ${
                 activeTranslation === 'en'
-                  ? 'bg-indigo-600 text-white shadow-xs'
-                  : 'text-slate-300 hover:text-white'
+                  ? 'bg-white text-indigo-900 shadow-xs font-bold'
+                  : 'text-white/80 hover:text-white'
               }`}
             >
               English
@@ -99,8 +97,8 @@ export const MushafView: React.FC = () => {
               onClick={() => setActiveTranslation('fr')}
               className={`px-3 py-1.5 rounded-xl transition ${
                 activeTranslation === 'fr'
-                  ? 'bg-indigo-600 text-white shadow-xs'
-                  : 'text-slate-300 hover:text-white'
+                  ? 'bg-white text-indigo-900 shadow-xs font-bold'
+                  : 'text-white/80 hover:text-white'
               }`}
             >
               Français
@@ -109,8 +107,8 @@ export const MushafView: React.FC = () => {
               onClick={() => setActiveTranslation('tafsir')}
               className={`px-3 py-1.5 rounded-xl transition font-arabic ${
                 activeTranslation === 'tafsir'
-                  ? 'bg-indigo-600 text-white shadow-xs'
-                  : 'text-slate-300 hover:text-white'
+                  ? 'bg-white text-indigo-900 shadow-xs font-bold'
+                  : 'text-white/80 hover:text-white'
               }`}
             >
               التفسير الميسر
@@ -119,8 +117,8 @@ export const MushafView: React.FC = () => {
               onClick={() => setActiveTranslation('none')}
               className={`px-3 py-1.5 rounded-xl transition ${
                 activeTranslation === 'none'
-                  ? 'bg-indigo-600 text-white shadow-xs'
-                  : 'text-slate-300 hover:text-white'
+                  ? 'bg-white text-indigo-900 shadow-xs font-bold'
+                  : 'text-white/80 hover:text-white'
               }`}
             >
               Arabic Only
@@ -132,7 +130,7 @@ export const MushafView: React.FC = () => {
       {/* Bismillah Header */}
       {showBismillah && (
         <div className="my-6 text-center">
-          <div className="inline-block px-6 py-2 rounded-2xl bg-slate-100/80 dark:bg-slate-900/80 font-arabic text-xl sm:text-2xl text-indigo-700 dark:text-indigo-400 font-bold border border-slate-200/80 dark:border-slate-800">
+          <div className="inline-block px-6 py-2 rounded-2xl bg-white dark:bg-slate-900 font-arabic text-xl sm:text-2xl text-indigo-700 dark:text-indigo-400 font-bold border border-slate-200 dark:border-slate-800 shadow-xs">
             بِسْمِ ٱللَّهِ ٱلرَّحْمَٰنِ ٱلرَّحِيمِ
           </div>
         </div>
@@ -152,17 +150,17 @@ export const MushafView: React.FC = () => {
               id={`ayah-${ayah.numberInSurah}`}
               className={`p-5 sm:p-6 rounded-2xl border transition-all duration-200 ${
                 isCurrentPlaying
-                  ? 'bg-indigo-50/80 dark:bg-indigo-950/40 border-indigo-500 shadow-md ring-2 ring-indigo-500/20'
-                  : 'bg-white dark:bg-slate-900 border-slate-200/80 dark:border-slate-800/80 hover:border-slate-300 dark:hover:border-slate-700'
+                  ? 'bg-indigo-50/90 dark:bg-indigo-950/40 border-indigo-500 shadow-md ring-2 ring-indigo-500/20'
+                  : 'bg-white dark:bg-slate-900 border-slate-200/90 dark:border-slate-800/80 shadow-xs hover:border-slate-300 dark:hover:border-slate-700'
               }`}
             >
               {/* Header Bar */}
-              <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800/80">
+              <div className="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
                 <div className="flex items-center space-x-2">
                   <span className="w-7 h-7 rounded-lg bg-indigo-50 dark:bg-indigo-950/80 text-indigo-700 dark:text-indigo-400 flex items-center justify-center text-xs font-mono font-bold">
                     {ayah.numberInSurah}
                   </span>
-                  <span className="text-[11px] text-slate-400 font-mono">
+                  <span className="text-[11px] text-slate-400 font-mono font-medium">
                     Juz {ayah.juz} • Page {ayah.page}
                   </span>
                 </div>
@@ -254,7 +252,7 @@ export const MushafView: React.FC = () => {
                   )}
 
                   {activeTranslation === 'tafsir' && ayah.tafsir && (
-                    <div dir="rtl" className="bg-slate-50 dark:bg-slate-800/60 p-3 rounded-xl border border-slate-200/80 dark:border-slate-700">
+                    <div dir="rtl" className="bg-slate-50 dark:bg-slate-800/60 p-3.5 rounded-xl border border-slate-200 dark:border-slate-700">
                       <div className="text-xs font-bold text-indigo-700 dark:text-indigo-400 mb-1 font-arabic">
                         التفسير الميسر:
                       </div>
@@ -275,7 +273,7 @@ export const MushafView: React.FC = () => {
         <button
           disabled={selectedSurahNumber <= 1}
           onClick={() => setSelectedSurahNumber(selectedSurahNumber - 1)}
-          className="flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed transition text-xs font-bold"
+          className="flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 disabled:opacity-30 disabled:cursor-not-allowed transition text-xs font-bold shadow-xs"
         >
           <ChevronLeft className="w-4 h-4" />
           <span>Previous</span>
@@ -288,7 +286,7 @@ export const MushafView: React.FC = () => {
         <button
           disabled={selectedSurahNumber >= 114}
           onClick={() => setSelectedSurahNumber(selectedSurahNumber + 1)}
-          className="flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-200 dark:hover:bg-slate-700 disabled:opacity-30 disabled:cursor-not-allowed transition text-xs font-bold"
+          className="flex items-center space-x-1.5 px-4 py-2 rounded-xl bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-700 border border-slate-200 dark:border-slate-700 disabled:opacity-30 disabled:cursor-not-allowed transition text-xs font-bold shadow-xs"
         >
           <span>Next</span>
           <ChevronRight className="w-4 h-4" />

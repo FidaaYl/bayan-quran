@@ -8,7 +8,6 @@ import { ThematicExplorer } from './components/ThematicExplorer';
 import { QuranQuiz } from './components/QuranQuiz';
 import { BookmarksView } from './components/BookmarksView';
 import { AudioPlayerBar } from './components/AudioPlayerBar';
-import { ProjectInfoModal } from './components/ProjectInfoModal';
 import { X } from 'lucide-react';
 
 const MainLayout: React.FC = () => {
@@ -69,9 +68,6 @@ const MainLayout: React.FC = () => {
 
       {/* Floating Dynamic Island Audio Player */}
       <AudioPlayerBar />
-
-      {/* University TP Academic Submission Modal */}
-      <ProjectInfoModal />
     </div>
   );
 };
