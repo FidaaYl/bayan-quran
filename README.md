@@ -1,4 +1,4 @@
-# Qabas Quran (قَبَس) — Smart Memorization & Audio Navigator
+# Qabas Quran (قَبَس) — Smart Memorization & Audio Tafsir Navigator
 
 > **University Practical Work (TP) Submission & Competition**  
 > **Course / Subject:** Web & Cloud Application Engineering  
@@ -12,9 +12,7 @@
 
 ## 📖 Overview
 
-**Qabas (قَبَس)** is an innovative, sleek Quranic web application engineered with a clean modern aesthetic, combining active recall memorization tools, thematic emotional reflection, a floating dynamic audio dock, and an interactive presentation trivia challenge.
-
-Inspired by modern learning psychology and cognitive science, Qabas provides students and reciters with an active, focused environment to study, memorize, and contemplate the Holy Quran.
+**Qabas (قَبَس)** is an innovative, sleek Quranic web application engineered with a clean modern aesthetic, combining active recall memorization tools, comparative Audio Tafsir & Revelation Context (*Asbab an-Nuzul*), a floating dynamic audio dock, and an interactive presentation trivia challenge.
 
 ---
 
@@ -29,16 +27,12 @@ Inspired by modern learning psychology and cognitive science, Qabas provides stu
 - **Mastery Tracker**: Mark verses as *Learning* or *Mastered* with persistent `localStorage` progress tracking and celebratory confetti upon completing a chapter.
 - **Ayah-by-Ayah Looper**: Repeat each verse 1x, 3x, 5x, or 10x with adjustable speed (0.75x to 1.5x).
 
-### 2. Life & Tadabbur Navigator
-Connects real-world human emotions and life crossroads with Quranic solace:
-- ⚡ **Anxiety & Overthinking (القلق وضيق الصدر)**: Ar-Ra'd 28, Al-Baqarah 286.
-- 💔 **Sadness & Heartache (الحزن والمواساة)**: Ad-Duhaa 3-5, Ash-Sharh 5-6.
-- 🌿 **Patience & Trials (الصبر والابتلاء)**: Al-Baqarah 153, Az-Zumar 10.
-- ✨ **Gratitude & Blessings (الشكر وحمد النعم)**: Ibrahim 7.
-- 🤲 **Forgiveness & Mercy (التوبة ورجاء المغفرة)**: Az-Zumar 53.
-- 🧭 **Seeking Guidance (طلب الهداية والبصيرة)**: Al-Kahf 10, Al-Fatihah.
-- 💼 **Sustenance & Tawakkul (الرزق والتوكل)**: At-Talaaq 2-3.
-*Each theme includes Arabic script, English & French translations, Tafsir summaries, and practical Tadabbur contemplation prompts.*
+### 2. Audio Tafsir & Revelation Context Studio (Asbab an-Nuzul)
+Inspired directly by `read.tafsir.one`:
+- **Comparative Classical Exegesis**: Side-by-side study of **Tafsir As-Sa'di** (*Taysir al-Karim al-Rahman*) and **Tafsir Ibn Kathir** (*Tafsir al-Qur'an al-'Azim*).
+- **Asbab an-Nuzul (أسباب النزول)**: The historical context, companion narrations, and circumstances surrounding the revelation of celebrated Quranic passages (e.g. Ayat al-Kursi, Surat Ad-Duha, Surat Al-Kawthar, Surat Al-Ikhlas, Cave of Thawr).
+- **Moral Lessons & Takeaways**: Actionable moral and intellectual principles extracted from each passage.
+- **Direct Audio Recitation**: High-bitrate recitation with one-click listening.
 
 ### 3. Synchronized Multi-Reciter Mushaf
 - Full catalog of all **114 Surahs** with instant search by Arabic name, English name, or Surah number.
@@ -54,12 +48,7 @@ Connects real-world human emotions and life crossroads with Quranic solace:
 ### 4. Interactive Quiz Battle
 - 8 engaging Quranic knowledge questions covering historical context, Surah lengths, unique Basmalah occurrences, and revelation wisdom.
 - Instant answer verification with explanatory notes and Surah references.
-- Tailored for the **live university TP presentation** to engage Dr. Sahraoui and fellow classmates.
-
-### 5. Academic TP Submission Suite
-- Built-in **TP Info Modal** accessible directly in the app.
-- Customizable student author names and university IDs.
-- One-click **"Send Submission to Prof. Sahraoui"** button that automatically pre-fills the email with the GitHub repo and deployment links.
+- Built specifically for the **live university TP presentation** to engage Dr. Sahraoui and fellow classmates.
 
 ---
 

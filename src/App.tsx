@@ -4,7 +4,7 @@ import { Navbar } from './components/Navbar';
 import { SurahSidebar } from './components/SurahSidebar';
 import { MushafView } from './components/MushafView';
 import { HifzStudio } from './components/HifzStudio';
-import { ThematicExplorer } from './components/ThematicExplorer';
+import { TafsirStudio } from './components/TafsirStudio';
 import { QuranQuiz } from './components/QuranQuiz';
 import { BookmarksView } from './components/BookmarksView';
 import { AudioPlayerBar } from './components/AudioPlayerBar';
@@ -60,7 +60,7 @@ const MainLayout: React.FC = () => {
         <main className="flex-1 flex flex-col min-w-0 overflow-y-auto pb-24 sm:pb-28">
           {viewMode === 'mushaf' && <MushafView />}
           {viewMode === 'hifz' && <HifzStudio />}
-          {viewMode === 'themes' && <ThematicExplorer />}
+          {viewMode === 'tafsir' && <TafsirStudio />}
           {viewMode === 'quiz' && <QuranQuiz />}
           {viewMode === 'bookmarks' && <BookmarksView />}
         </main>

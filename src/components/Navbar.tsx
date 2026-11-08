@@ -3,7 +3,7 @@ import { useQuran, ViewMode } from '../context/QuranContext';
 import {
   BookOpenText,
   BrainCircuit,
-  Compass,
+  ScrollText,
   Zap,
   BookmarkCheck,
   Sun,
@@ -30,7 +30,7 @@ export const Navbar: React.FC<NavbarProps> = ({ onToggleSidebar }) => {
   const navItems: { mode: ViewMode; label: string; icon: React.ReactNode; badge?: number }[] = [
     { mode: 'mushaf', label: 'Mushaf Reader', icon: <BookOpenText className="w-4 h-4" /> },
     { mode: 'hifz', label: 'Hifz Studio', icon: <BrainCircuit className="w-4 h-4" /> },
-    { mode: 'themes', label: 'Life & Tadabbur', icon: <Compass className="w-4 h-4" /> },
+    { mode: 'tafsir', label: 'Audio Tafsir & Context', icon: <ScrollText className="w-4 h-4" /> },
     { mode: 'quiz', label: 'Quiz Battle', icon: <Zap className="w-4 h-4" /> },
     {
       mode: 'bookmarks',

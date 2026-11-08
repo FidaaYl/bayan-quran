@@ -33,21 +33,22 @@ export interface Reciter {
   style: string;
 }
 
-export interface ThematicAyah {
+export interface TafsirPassage {
   id: string;
-  themeId: string;
-  themeTitleEn: string;
-  themeTitleAr: string;
-  themeTitleFr: string;
+  titleEn: string;
+  titleAr: string;
   surahNumber: number;
   surahNameAr: string;
   surahNameEn: string;
-  ayahNumber: number;
+  ayahRange: string;
   arabicText: string;
   englishTranslation: string;
   frenchTranslation: string;
-  tafsirSummary: string;
-  reflectionPrompt: string;
+  asbabAnNuzulAr: string;
+  asbabAnNuzulEn: string;
+  tafsirSaadi: string;
+  tafsirIbnKathir: string;
+  keyLessons: string[];
   audioUrl: string;
 }
 
@@ -61,6 +62,6 @@ export interface QuizQuestion {
   surahReference?: string;
 }
 
-export type ViewMode = 'mushaf' | 'hifz' | 'themes' | 'quiz' | 'bookmarks';
+export type ViewMode = 'mushaf' | 'hifz' | 'tafsir' | 'quiz' | 'bookmarks';
 export type RecallMode = 'normal' | 'first-words' | 'masked' | 'blanks';
 export type MasteryStatus = 'new' | 'learning' | 'mastered';
